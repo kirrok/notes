@@ -1,0 +1,3 @@
+connect to db :  sudo -u postgres psql  --cluster 9.6/main -h localhost -p 5432 stoloto_news888
+restore from dump: sudo -u postgres psql -h localhost -p 5432  stoloto_news888 < cms_dump.v2.sql
+
