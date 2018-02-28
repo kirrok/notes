@@ -1,3 +1,8 @@
 connect to db :  sudo -u postgres psql  --cluster 9.6/main -h localhost -p 5432 stoloto_news888
-restore from dump: sudo -u postgres psql -h localhost -p 5432  stoloto_news888 < cms_dump.v2.sql
+restore from dump: psql -U postgres -h localhost -p 5432  stoloto_news888 < cms_dump.v2.sql
 
+cp prod to dev: psql -U finch -h 10.10.100.126 -p 5432 stoloto_news888_posrtal5 < Finch/news888-app/db_dumps/prodl_dump.30.06.17.sql
+
+
+                                                                                                                     Copy directory scp: finch@10.60.132.101:/home/finch/sport24/static /Users/sobolev/Finch/news888-app
+scp -r finch@10.60.132.101:/home/finch/sport24/static/hockey /Users/sobolev/Finch/news888-app/news888-statics/src/test/resources/static
