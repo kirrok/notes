@@ -1,3 +1,4 @@
 docker top <ps>
 docker stats <ps>
 docker history sudoroot/<ps>
+docker port
