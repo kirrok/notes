@@ -3,6 +3,25 @@ restore from dump: psql -U postgres -h localhost -p 5432  stoloto_news888 < cms_
 
 cp prod to dev: psql -U finch -h 10.10.100.126 -p 5432 stoloto_news888_posrtal5 < Finch/news888-app/db_dumps/prodl_dump.30.06.17.sql
 
-
-                                                                                                                     Copy directory scp: finch@10.60.132.101:/home/finch/sport24/static /Users/sobolev/Finch/news888-app
+Copy directory scp: finch@10.60.132.101:/home/finch/sport24/static /Users/sobolev/Finch/news888-app
 scp -r finch@10.60.132.101:/home/finch/sport24/static/hockey /Users/sobolev/Finch/news888-app/news888-statics/src/test/resources/static
+
+
+ == insert data from another(same) table ==
+
+INSERT INTO news (id, publishdate, sport_id, title, link, published, temp, type, leadannouncement, urn, top, waspublished, showinpopup)
+  SELECT
+    uuid_generate_v4(),
+    now(),
+    '1fb3a55e-5ac5-425e-b54e-88a93663159d',
+    'Тест видео ленты #' || x.id,
+    'https://8news.media.eagleplatform.com/index/player?record_id=912282',
+    TRUE,
+    FALSE,
+    'mediatekaVideo',
+    '[["p", [["анонс-лид"]], {}]]',
+    'urn-video-test' || x.id,
+    FALSE,
+    FALSE,
+    FALSE
+  FROM generate_series(1, 40) AS x(id);
